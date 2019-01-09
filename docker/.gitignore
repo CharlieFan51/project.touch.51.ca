@@ -1,0 +1,7 @@
+.idea
+.data
+/logs
+/data
+/.project
+.docker-sync
+/jenkins/jenkins_home
