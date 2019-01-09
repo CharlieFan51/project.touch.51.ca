@@ -1,0 +1,6 @@
+[submodule "news-app.api.51.ca"]
+	path = news-app.api.51.ca
+	url = git@github.com:51-CA/news-app.api.51.ca.git
+[submodule "m.51.ca"]
+	path = m.51.ca
+	url = git@github.com:51-CA/m.51.ca.git
