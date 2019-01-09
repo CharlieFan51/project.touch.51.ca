@@ -35,6 +35,18 @@ docker-compose exec mysql mysql -u default -psecret
 #### Host
 
 ```bash
+# vi /etc/hosts
+
 127.0.0.1    dev.m.51.ca
 127.0.0.1    dev.news-app.api.51.ca
+127.0.0.1    dev.phpmyadmin.ca
+```
+
+#### Database
+
+```bash
+# 访问 dev.phpmyadmin.ca
+
+username = default
+password = secret
 ```
