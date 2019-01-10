@@ -40,6 +40,7 @@ docker-compose exec mysql mysql -u default -psecret
 # vi /etc/hosts
 
 127.0.0.1    dev.m.51.ca
+127.0.0.1    dev.discovery.51.ca
 127.0.0.1    dev.news-app.api.51.ca
 127.0.0.1    dev.phpmyadmin.ca
 ```

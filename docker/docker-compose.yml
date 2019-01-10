@@ -211,10 +211,12 @@ services:
         frontend:
          aliases:
           - dev.m.51.ca
+          - dev.discovery.51.ca
           - dev.news-app.api.51.ca
         backend:
          aliases:
           - dev.m.51.ca
+          - dev.discovery.51.ca
           - dev.news-app.api.51.ca
 
 ### Blackfire ########################################

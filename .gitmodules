@@ -4,3 +4,6 @@
 [submodule "m.51.ca"]
 	path = m.51.ca
 	url = git@github.com:51-CA/m.51.ca.git
+[submodule "discovery.51.ca"]
+	path = discovery.51.ca
+	url = git@github.com:51-CA/discovery.51.ca.git
