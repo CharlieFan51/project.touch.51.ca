@@ -47,39 +47,43 @@ docker-compose exec mysql mysql -u default -psecret
 #### Database
 
 ```bash
-# 访问 dev.phpmyadmin.ca
+# 应用数据库资料
+cp database .data
 
+# 访问 dev.phpmyadmin.ca
 username = default
 password = secret
 ```
 
 ## m.51.ca 开发
-#### npm start
-    在localhost测试的版本，config中的api可设置测试和正式的版本
-    测试的api： http://news-app.apidev.51.ca
-    正式的api： http://news-app.api.51.ca
+#### 本地开发
 
-    测试版的api在本地调试时不会有跨域问题
-    正式版的api会出现跨域的问题
-    解决浏览器跨域的问题，接口需支持多个域名的跨域请求，这个需要中间层开发，因为时间原因现在暂时没有这个功能
-    现在debug是需要设置chrome，取消跨域限制 （https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome）
-    如果是safari可在dev模式下取消跨域限制
+```bash
+npm start
+```
 
-    如果没有错误，这里会出现很多warning，比如说使用 == 而不是使用 ===。（可忽略）
+在localhost测试的版本，config中的api可设置测试和正式的版本
+```bash
+测试的api： http://news-app.apidev.51.ca
+正式的api： http://news-app.api.51.ca
+```
 
-#### npm build
+测试版的api在本地调试时不会有跨域问题
+正式版的api会出现跨域的问题
+解决浏览器跨域的问题，接口需支持多个域名的跨域请求，这个需要中间层开发，因为时间原因现在暂时没有这个功能
+现在debug是需要设置chrome，取消跨域限制 （https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome）
+如果是safari可在dev模式下取消跨域限制
 
-    打包后会把生成的文件都放在build的文件夹中，上传代码通过FTP
-    测试服务器为：
-        host: srv6.51-servers.net
-        port: 5151
-        username: m51diy
-        password: 2}Ul%nTi)8Vl
-    正式服务器为：
-        host: srv3.51-servers.net
-        port: 5151
+如果没有错误，这里会出现很多warning，比如说使用 == 而不是使用 ===。（可忽略）
 
-    build文件夹中有文件.htaccess，此文件是apache的配置文件，如果服务器是apache的话，需要这个文件来支持路由
+#### 发布正式版
+
+```bash
+npm run-script build
+```
+打包后会把生成的文件都放在build的文件夹中，上传代码通过FTP
+    
+build文件夹中有文件.htaccess，此文件是apache的配置文件，如果服务器是apache的话，需要这个文件来支持路由
 
 
 #### 代码结构
