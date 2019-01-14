@@ -42,6 +42,7 @@ docker-compose exec mysql mysql -u default -psecret
 127.0.0.1    dev.m.51.ca
 127.0.0.1    dev.discovery.51.ca
 127.0.0.1    dev.news-app.api.51.ca
+127.0.0.1    dev.api.51.ca
 127.0.0.1    dev.phpmyadmin.ca
 ```
 
@@ -57,6 +58,7 @@ password = secret
 ```
 
 ## m.51.ca 开发
+[link](m.51.ca/README.md)
 #### 本地开发
 
 ```bash
