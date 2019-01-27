@@ -4,6 +4,7 @@
 
 ```bash
 # 启动 nginx / mysql / phpmyadmin
+# ./start.sh
 find . -name "._*" -type f -delete && docker-compose up -d nginx mysql phpmyadmin
 
 # 连接到对应容器
@@ -16,6 +17,7 @@ docker-compose logs {container-name}
 docker-compose ps
 
 # 停止所有容器
+# ./stop.sh
 docker-compose stop
 
 # 停止并删除所有容器
@@ -25,6 +27,7 @@ docker-compose down
 docker system prune -a
 
 # 重新建立镜像
+# ./rebuild.sh {container-name}
 docker-compose build --no-cache {container-name}
 
 # Docker 的 MySql操作
@@ -47,9 +50,11 @@ docker-compose exec mysql mysql -u default -psecret
 
 #### Database
 
+还原 database 数据库到 .data
+
 ```bash
 # 应用数据库资料
-cp database .data
+cp -r database .data
 
 # 访问 dev.phpmyadmin.ca
 username = default
@@ -62,7 +67,7 @@ password = secret
 
 51中间层接口，分别转接51房产、51主站、51论坛、51新闻、问吧的接口，为 51 Touch版、51 App、问吧 App 提供数据支持，详细文档请查阅对应代码库。
 
-#### Repository
+#### Repository
 
 https://github.com/51-CA/news-app.api.51.ca
 
@@ -72,22 +77,25 @@ https://github.com/51-CA/news-app.api.51.ca
 
 #### 依赖
 
-51主站接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222546/BBS.51.CA+API)) (包括工作接口、用户接口、租房接口、黄页接口)
+* newsappa_db 数据库
+
+
+* 51主站接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222546/BBS.51.CA+API)) (包括工作接口、用户接口、租房接口、黄页接口)
 ```bash
 https://www.51.ca
 ```
 
-51新闻接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222566/www.51.ca+JSON))
+* 51新闻接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222566/www.51.ca+JSON))
 ```bash
 https://info.51.ca
 ```
 
-51口碑接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/16646162/kb.51.ca))
+* 51口碑接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/16646162/kb.51.ca))
 ```bash
 https://kb.51.ca
 ```
 
-51论坛接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222546/BBS.51.CA+API))
+* 51论坛接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/12222546/BBS.51.CA+API))
 ```bash
 https://bbs.51.ca
 ```
@@ -99,6 +107,8 @@ https://bbs.51.ca
 
 51问吧旧版接口，大部分功能已经改成用 news-app.api.51.ca 接口，现在只为51团购商家版提供登录和消费验证接口，还有分别为51 App、问吧 App 提供黄页、工作机会、打折消息、周末好去处等详情页面，详细文档请查阅对应代码库。
 
+* 51团购商家版的登录和消费验证接口
+* 51 App、问吧 App 提供黄页、工作机会、打折消息、周末好去处等详情页面
 ```bash
 # 黄页详情页
 http://api.51.ca/wen8app/detailpage/service/#/item/199909
@@ -106,9 +116,11 @@ http://api.51.ca/wen8app/detailpage/service/#/item/199909
 http://api.51.ca/wen8app/detailpage/job/#item/650919
 # 打折消息和周末好去处详情页
 http://api.51.ca/wen8app/detailpage/event/#item/723783
+# 口碑商家详情页
+http://api.51.ca/wen8app/detailpage/kb/detail.php?id=981
 ```
 
-#### Repository
+#### Repository
 
 https://github.com/51-CA/api.51.ca
 
@@ -118,28 +130,44 @@ https://github.com/51-CA/api.51.ca
 
 51网站的手机 Touch版，主要包含了新闻，黄页和租房模块，以 React 开发，详细文档请查阅对应代码库。
 
-#### Repository
+#### Repository
 
 https://github.com/51-CA/m.51.ca.git
 
 #### 依赖
-51中间层接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/1048704/51+API))
+* 51中间层接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/1048704/51+API))
 ```bash
+# 本地链接
+http://dev.news-app.api.51.ca
+
+# 正式链接
 https://news-app.api.51.ca
 ```
-
 
 - - -
 ## discovery.51.ca
 
 51 App 和 问吧 App的发现页面，以 React 开发，详细文档请查阅对应代码库。
 
-#### Repository
+```bash
+# 本地链接
+http://dev.discovery.51.ca
+http://dev.news-app.api.51.ca/newsapp/discovery/index.html
+
+# 正式链接
+https://news-app.api.51.ca/newsapp/discovery/index.html
+```
+
+#### Repository
 
 https://github.com/51-CA/discovery.51.ca.git
 
 #### 依赖
-51中间层接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/1048704/51+API))
+* 51中间层接口 ([文档](https://51dotca.atlassian.net/wiki/spaces/5NA/pages/1048704/51+API))
 ```bash
+# 本地链接
+http://dev.news-app.api.51.ca
+
+# 正式链接
 https://news-app.api.51.ca
 ```
