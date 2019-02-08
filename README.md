@@ -7,6 +7,10 @@
 # ./start.sh
 find . -name "._*" -type f -delete && docker-compose up -d nginx mysql phpmyadmin
 
+#P.S：上面那步如果出错那么就
+ cd docker
+ docker-compose build --no-cache php-fpm
+
 # 连接到对应容器
 docker-compose exec {container-name} bash
 
